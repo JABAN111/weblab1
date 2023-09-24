@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru" class = "no-js">
+<head>
+
+    <link href = "Styles/style.css" rel = "stylesheet"> 
+
+    <meta charset="UTF-8">
+    <meta name = "viewport" content="width=device-width, initial-scale=1">
+    <title>Lab №1</title>
+
+    <meta name = "description" content= "Web-programming first lab">
+    <meta name="author" content="Niagin Mikhail Alexeyevich">
+
+    <link rel = "icon" type="pictures/icon" href = "picterus/icon.png">
+</head>
+<body>
+    <header class = "head">
+        <table>
+            <h6>
+            <th>
+                Нягин Михаил Алексеевич,
+            </th>
+            <th>
+                Группа P3213,
+            </th>
+            <th>
+                Вариант: 2307</h6><!-- SERIF  его цвет и размер в каскадной таблице стилей. -->
+            </th>
+        </table>
+    </header>
+    <table width = 100%>
+        <tr>
+            <th>
+                Место для ввода:
+            </th>
+            <th>
+                График:
+            </th>
+            <th>
+                Статистика:
+            </th>
+        </tr>
+        <td>
+            <form action = "php/index.php" method="post">
+                Выберите x:
+                <input type="radio" name="x" value="-5"> -5
+                <input type="radio" name="x" value="-4"> -4
+                <input type="radio" name="x" value="-3"> -3
+                <input type="radio" name="x" value="-2"> -2
+                <input type="radio" name="x" value="-1"> -1
+                <input type="radio" name="x" value="0"> 0
+                <input type="radio" name="x" value="1"> 1
+                <input type="radio" name="x" value="2"> 2
+                <input type="radio" name="x" value="3"> 3<br>
+            Выберите y:
+            <input id = "yValue" type="text" name="y" placeholder="(от -3 до 5)"  title="Введите число от 2 до 5 символов"><br>
+            Выберите R:
+            <select name = "R">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select><br>
+            <input id = "submit" type="submit" name = "submit" value = "попытка">
+        </form>
+        </td>
+        
+            <td>
+                <img src = "picterus/areas.png"
+                 alt = "graphic for lab1"
+                 width="50%">
+            </td>
+            <td>
+                <b>LOGO</b>
+            </td>
+    </table>
+    <script src="test.js"></script>
+</body>
+</html>
