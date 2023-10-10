@@ -4,24 +4,44 @@
 }
 
 /* Стили для заголовка в шапке */
-.header {
+#header, .nameOfColons {
     background-color: #060605;
     /*в явном виде задаем стили для ФИО,номер группы, номер варианта*/
     color: white;
     font-family: serif;
     font-size: 30px;
 
-    padding: 10px;
-    text-align: center;
 }
+
 
 /* Стили для таблицы */
 table {
     width: 100%;
-    border-collapse: collapse;
 }
-table > .nameOfColons{
-    background-color: #34a197;
+table .tableContainer{
+    font-size: 20px;
+    font-family: Verdana;
+}
+input{
+    background-color: rgb(128, 128, 128);
+}
+#yValue::placeholder{
+    color: whitesmoke;
+    font-weight: bold;
+}
+#statistics{
+    text-align: center;
+    color: whitesmoke;
+
+    background-color: #060605;
+}
+/*#mainTable:not(.nameOfColons){*/
+/*    background-color: #34a197;*/
+/*}*/
+
+.result{
+    max-height: 10px; /* Высота таблицы с классом "result" */
+    overflow: scroll;
 }
 
 /* Стили для ячеек таблицы */

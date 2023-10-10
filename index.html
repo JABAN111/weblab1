@@ -15,8 +15,8 @@
     <link rel="icon" type="pictures/icon" href="picterus/icon.png">
 </head>
 <body>
-<header>
-    <table class="header">
+<header id = "header">
+    <table>
             <th>
                 <h6>Нягин Михаил Алексеевич</h6>
             </th>
@@ -28,7 +28,7 @@
         </th>
     </table>
 </header>
-<table>
+<table id = "mainTable">
     <tr class = "nameOfColons">
         <th>
             Место для ввода:
@@ -36,13 +36,11 @@
         <th>
             График:
         </th>
-        <th>
-            Статистика:
-        </th>
     </tr>
     <td>
         <form id = "coordinatesForm" action="php/index.php" method="post">
-            Выберите x:
+            <label for="xInput">Выберите x:</label>
+            <label id = "xInput">
             <input autocomplete='off' class="x" type="radio" name="x" value="-5"> -5
             <input autocomplete='off' class="x" type="radio" name="x" value="-4"> -4
             <input autocomplete='off'  class="x" type="radio" name="x" value="-3"> -3
@@ -51,11 +49,12 @@
             <input autocomplete='off' class="x" type="radio" name="x" value="0"> 0
             <input autocomplete='off' class="x" type="radio" name="x" value="1"> 1
             <input autocomplete='off' class="x" type="radio" name="x" value="2"> 2
-            <input autocomplete='off' class="x" type="radio" name="x" value="3"> 3<br>
-            Выберите y:
-            <input autocomplete='off' id="yValue" type="text" name="y" placeholder="(от -3 до 5)" title="Введите число от -3 до 5"><br>
+            <input autocomplete='off' class="x" type="radio" name="x" value="3"> 3
+            </label><br>
+            <label for="yInput">Выберите y:</label>
+            <input autocomplete='off' id="yInput" type="text" name="y" placeholder="(от -3 до 5)" title="Введите число от -3 до 5"><br>
             Выберите R:
-            <label>
+            <label id = "Rinput">
                 <select class="R" name="R" autocomplete='off'>
                     <option class = "R" value="">Select</option>
                     <option class= "R" value="1">1</option>
@@ -76,22 +75,21 @@
              alt="graphic for lab1"
              width="50%">
     </td>
-    <td>
-        <table class="result">
-            <tr>
-                <th>x</th>
-                <th>y</th>
-                <th>R</th>
-                <th>Статус</th>
-                <th>Текущее время</th>
-                <th>Время работы скрипта(в мс)</th>
-            </tr>
-        </table>
-
-    </td>
 </table>
 <br>
 <img src="picterus/LABA.gif" width="100%">
+<h1 id = "statistics">Статистика</h1>
+<table class="result">
+    <tr>
+        <th>x</th>
+        <th>y</th>
+        <th>R</th>
+        <th>Статус</th>
+        <th>Текущее время</th>
+        <th>Время работы скрипта(в мс)</th>
+    </tr>
+</table>
+
 <script src="js/script.js"></script>
 </body>
 </html>
