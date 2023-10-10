@@ -18,15 +18,17 @@
 </body>
 </html>
 
+
 <?php
+$time_start = microtime(true);
 
-use php\areaData as areaDatas;
-    for($i = 0; $i < 10; $i++){
-        echo $i . "<br>";
-    }
-    // require_once('');
+// Спим некоторое время
+usleep(100);
 
-    $c = new areaData("checkName");
-    print(areaData::areaCheck(1,-1,0));
+$time_end = microtime(true);
+$time = $time_end - $time_start;
+
+echo "Ничего не делал $time секунд\n";
+echo "\nВремя начала: " . $time_start . "\n" . "Время end: " . $time_end
 
 ?>

@@ -3,6 +3,7 @@
 <head>
 
     <link href="Styles/style.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,23 +15,21 @@
     <link rel="icon" type="pictures/icon" href="picterus/icon.png">
 </head>
 <body>
-<header class="head">
-    <table>
-        <h6>
+<header>
+    <table class="header">
             <th>
-                Нягин Михаил Алексеевич,
+                <h6>Нягин Михаил Алексеевич</h6>
             </th>
             <th>
-                Группа P3213,
+                <h6>Группа P3213</h6>
             </th>
             <th>
-                Вариант: 2307
-        </h6><!-- SERIF  его цвет и размер в каскадной таблице стилей. -->
+                <h6>Вариант: 2307</h6>
         </th>
     </table>
 </header>
-<table width=100%>
-    <tr>
+<table>
+    <tr class = "nameOfColons">
         <th>
             Место для ввода:
         </th>
@@ -42,7 +41,7 @@
         </th>
     </tr>
     <td>
-        <form action="php/index.php" method="post">
+        <form id = "coordinatesForm" action="php/index.php" method="post">
             Выберите x:
             <input autocomplete='off' class="x" type="radio" name="x" value="-5"> -5
             <input autocomplete='off' class="x" type="radio" name="x" value="-4"> -4
@@ -66,9 +65,10 @@
                     <option class = "R" value = "5">5</option>
                 </select>
             </label><br>
-            <button id="submit" type="submit" disabled name="submit" value="попытка">попытка</button>
-
         </form>
+
+        <button id="button" type="button" disabled name="button" value="попытка">попытка</button>
+
     </td>
 
     <td>
@@ -77,11 +77,21 @@
              width="50%">
     </td>
     <td>
-        <b>LOGO</b>
+        <table class="result">
+            <tr>
+                <th>x</th>
+                <th>y</th>
+                <th>R</th>
+                <th>Статус</th>
+                <th>Текущее время</th>
+                <th>Время работы скрипта(в мс)</th>
+            </tr>
+        </table>
+
     </td>
 </table>
 <br>
 <img src="picterus/LABA.gif" width="100%">
-<script src="js/test1.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>

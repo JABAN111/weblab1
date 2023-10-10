@@ -7,7 +7,7 @@ let RValid = false;
 const xRadioButtons = document.querySelectorAll(".x");
 const Y = document.getElementById("yValue");
 const RButtons = document.querySelectorAll(".R")
-const submitButton = document.getElementById("submit");
+const submitButton = document.getElementById("button");
 //add event for every x-button
 for (const element of xRadioButtons) {
     element.addEventListener('change', isClickedX);
@@ -19,10 +19,7 @@ for (const element of RButtons) {
 Y.addEventListener('input', isValidY);
 
 function checkEverythingIsValid(){
-    if(xValid && yValid && RValid){
-        alert("ВСЕ ВАЛИДНО");
-        submitButton.disabled = false;
-    }
+    submitButton.disabled = !(xValid && yValid && RValid);
     console.log("Валидация не пройдена:" +
         "xValid=" + xValid + " " +
         "yValid=" + yValid + " "+
@@ -34,7 +31,7 @@ function checkEverythingIsValid(){
 //     const btn = document.getElementById("submit");
 //     btn.setAttribute('disable', '')
 // }
-function isValidY(event) {
+function isValidY(event){
     let y = event.target.value;
     console.log("someData" + event.target.textContent)
     console.log("Введенное значение y: " + event.target.value + " " +
@@ -44,7 +41,6 @@ function isValidY(event) {
         checkEverythingIsValid();
         return false;
     }else if(y >= -3 && y <= 5){
-        console.log("Введеное значение " + y + " подходит");
         yValid = true;
         checkEverythingIsValid();
         return true;
@@ -57,7 +53,7 @@ function isValidY(event) {
         return false;
     }
 }
-function isClickedX(event) {
+function isClickedX(event){
     xValid = true;
     checkEverythingIsValid();
     return true;
@@ -70,30 +66,25 @@ function isSelectedR(event){
     }
     console.log(R + "- this must be value of R");
 }
-// console.log(xValid);
-// function isClickedX(event) {
-//     let x = event.target.value;
-//     if(!isNan(x) && parseInt(x, 10) === 3){
-//         console.log(x);
-//     }
-//     if(x !== undefined) {
-//         console.log("change " + event.target.value);
-//         return true;
-//     }
-//     else{
-//         event.preventDefault()
-//     }
-// }
 
-// document.getElementById("submit").addEventListener('click',function (event) {
-//     alert("why")
-//     event.preventDefault();
-//     alert("NO U WON'T")
-// })
+$(document).ready(function () {
+    $("#button").click(function () {
+        let localTime = new Date().getTimezoneOffset()
+        ; // Получаем локальное время пользователя
+        let formData = $("#coordinatesForm").serialize();
 
+        formData += "&localTime=" + localTime
 
-
-//
-// if (isValidY() || isClickedX()) {
-//     console.log("someone good");
-// }
+        $.ajax({
+            type: "POST",
+            url: "php/index.php",
+            data: formData,
+            success: function (result) {
+                $(".result").append(result);
+            },
+            error: function (error) {
+                console.error("Error while getting data from server");
+            }
+        });
+    });
+});

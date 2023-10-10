@@ -1,15 +1,27 @@
+/* Универсальный селектор для страницы*/
+*{
+    margin: 0;
+}
+
 /* Стили для заголовка в шапке */
-.head {
-    background-color: #333; /* Цвет фона */
-    color: white; /* Цвет текста */
-    padding: 10px; /* Внутренние отступы */
-    text-align: center; /* Выравнивание текста по центру */
+.header {
+    background-color: #060605;
+    /*в явном виде задаем стили для ФИО,номер группы, номер варианта*/
+    color: white;
+    font-family: serif;
+    font-size: 30px;
+
+    padding: 10px;
+    text-align: center;
 }
 
 /* Стили для таблицы */
 table {
-    width: 100%; /* Ширина таблицы */
-    border-collapse: collapse; /* Объединение границ таблицы и ячеек */
+    width: 100%;
+    border-collapse: collapse;
+}
+table > .nameOfColons{
+    background-color: #34a197;
 }
 
 /* Стили для ячеек таблицы */
