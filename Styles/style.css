@@ -1,5 +1,6 @@
 /* Универсальный селектор для страницы*/
 *{
+    padding: 0;
     margin: 0;
 }
 
@@ -14,13 +15,12 @@
 }
 
 
-/* Стили для таблицы */
 table {
     width: 100%;
 }
 table .tableContainer{
     font-size: 20px;
-    font-family: Verdana;
+    font-family: verdana, serif;
 }
 input{
     background-color: rgb(128, 128, 128);
@@ -35,33 +35,26 @@ input{
 
     background-color: #060605;
 }
-/*#mainTable:not(.nameOfColons){*/
-/*    background-color: #34a197;*/
-/*}*/
 
 .result{
     max-height: 10px; /* Высота таблицы с классом "result" */
     overflow: scroll;
 }
 
-/* Стили для ячеек таблицы */
 td, th {
-    border: 1px solid #ccc; /* Границы ячеек */
-    padding: 10px; /* Внутренние отступы ячеек */
-    text-align: center; /* Выравнивание текста по центру */
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
 }
 
-/* Стили для изображения */
 img {
-    max-width: 100%; /* Максимальная ширина изображения */
-    height: auto; /* Автоматическая высота для изображения */
+    max-width: 100%;
 }
 
-/* Стили для ввода текста */
 input[type="text"] {
-    width: 100%; /* Ширина поля ввода */
-    padding: 5px; /* Внутренние отступы поля ввода */
-    margin-bottom: 5px; /* Отступ снизу */
-    border: 1px solid #ccc; /* Граница поля ввода */
-    border-radius: 5px; /* Закругленные углы поля ввода */
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }

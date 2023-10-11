@@ -1,62 +1,70 @@
 <?php
 include "areaData.php";
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    // Начало записи времени
-    $timeStart = microtime(true);
+include "validator.php";
+@session_start();
+if ($_SERVER["REQUEST_METHOD"] !== "POST") {
+    http_response_code(405);
+    exit;
+}
+if (!isset($_SESSION["results"])) {
+    $_SESSION["results"] = array();
+}
 
-    //полученные данные методом post
-    $x = (int) $_POST["x"];
-    $y = (float) $_POST["y"];
-    $R = (int) $_POST["R"];
+// Начало записи времени
+$timeStart = microtime(true);
 
-    //Определяем UTC время отправителя
-    //временно не работает:D
-    $localTime = $_POST["localTime"];
-    $userTimeZone = "Europe/Moscow";
+// Полученные данные методом POST
+$x = $_POST["x"];
+$y = $_POST["y"];
+$R = $_POST["R"];
+$validator = new Validator($x,$y,$R);
+if($validator->checkData()) {
+
+    $timeZone = $_POST["localTime"];
+    $userTimeZone = $timeZone;
     date_default_timezone_set($userTimeZone);
     $time = date("Y-m-d") . "\n" . date("H:i:s");
 
     $areaData = new areaData();
-    $result = $areaData -> areaCheck($x,$y,$R);
+    $result = $areaData->areaCheck($x, $y, $R);
 
     $timeEnd = microtime(true);
-    $timeOfWorkingScript = $timeEnd - $timeStart;
-    $timeOfWorkingScriptMilliseconds = $timeOfWorkingScript * 1000;
+    $timeOfWorkingScript = ($timeEnd - $timeStart) * 1000;
 
+    $newData = array(
+        "x" => $x,
+        "y" => $y,
+        "R" => $R,
+        "result" => $result,
+        "time" => $time,
+        "timeOfWorkingScript" => $timeOfWorkingScript
+    );
+    $_SESSION["results"][] = $newData;
 
-    $table = "<tr><td>$x</td>
-                <td>$y</td>
-                <td>$R</td>
-                <td id = jo>$result</td>";
-    $table .= "<td>$time</td>";
-    $table .= "<td>$timeOfWorkingScriptMilliseconds</td></tr>";
+//array_reverse($session)
 
-    echo $table;
-    // Генерация HTML-таблицы на основе полученных данных
-//    $table = "<table>";
-//    $table .= "<tr><td>x</td></tr>";
-//    $table .= "<tr><td>y</td></tr>";
-//    $table .= "<tr><td>R</td></tr>";
-//
-//    $table .= "<tr><td>$x</td></tr>";
-//    $table .= "<tr><td>$x</td></tr>";
-//    $table .= "<tr><td>$x</td></tr>";
-//
-//    $table .= "</table>";
-} else {
-    http_response_code(405);
-    echo "Метод не поддерживается";
+    echo "<tr>
+        <th>x</th>
+        <th>y</th>
+        <th>R</th>
+        <th>Статус</th>
+        <th>Текущее время</th>
+        <th>Время работы скрипта(в мс)</th>
+    </tr>";
+
+    foreach (($_SESSION["results"]) as $row) {
+        echo "<tr>";
+        echo "<td>" . $row['x'] . "</td>";
+        echo "<td>" . $row['y'] . "</td>";
+        echo "<td>" . $row['R'] . "</td>";
+        echo "<td>" . $row['result'] . "</td>";
+        echo "<td>" . $row['time'] . "</td>";
+        echo "<td>" . $row['timeOfWorkingScript'] . "</td>";
+    }
+
+    exit; // Завершение выполнения скрипта
+}else{
+    http_response_code(422);
     exit;
 }
 ?>
-
-<!--<!DOCTYPE html>-->
-<!--<html>-->
-<!--<head>-->
-<!--    <title>Результат</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--<h2>Результат:</h2>-->
-
-<!--</body>-->
-<!--</html>-->

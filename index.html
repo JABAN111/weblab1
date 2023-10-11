@@ -31,14 +31,14 @@
 <table id = "mainTable">
     <tr class = "nameOfColons">
         <th>
-            Место для ввода:
+            Место для ввода
         </th>
         <th>
-            График:
+            График
         </th>
     </tr>
     <td>
-        <form id = "coordinatesForm" action="php/index.php" method="post">
+        <form id = "coordinatesForm" action="php/index.php" method="post" onsubmit="return false">
             <label for="xInput">Выберите x:</label>
             <label id = "xInput">
             <input autocomplete='off' class="x" type="radio" name="x" value="-5"> -5
@@ -51,8 +51,8 @@
             <input autocomplete='off' class="x" type="radio" name="x" value="2"> 2
             <input autocomplete='off' class="x" type="radio" name="x" value="3"> 3
             </label><br>
-            <label for="yInput">Выберите y:</label>
-            <input autocomplete='off' id="yInput" type="text" name="y" placeholder="(от -3 до 5)" title="Введите число от -3 до 5"><br>
+            <label for="yValue">Выберите y:</label>
+            <input autocomplete='off' id="yValue" type="text" name="y" placeholder="(от -3 до 5)" title="Введите число от -3 до 5"><br>
             Выберите R:
             <label id = "Rinput">
                 <select class="R" name="R" autocomplete='off'>
@@ -80,14 +80,9 @@
 <img src="picterus/LABA.gif" width="100%">
 <h1 id = "statistics">Статистика</h1>
 <table class="result">
-    <tr>
-        <th>x</th>
-        <th>y</th>
-        <th>R</th>
-        <th>Статус</th>
-        <th>Текущее время</th>
-        <th>Время работы скрипта(в мс)</th>
-    </tr>
+    <div id="test">
+
+    </div>
 </table>
 
 <script src="js/script.js"></script>
